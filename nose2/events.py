@@ -227,7 +227,9 @@ class Hook:
 
     .. attribute :: plugins
 
-       The list of plugin instances bound to this hook.
+       The list of plugin instances bound to this hook, ordered alphabetically
+       by the module defining each plugin class. Plugins defined in the same
+       module retain their registration order.
 
     """
 
@@ -244,6 +246,7 @@ class Hook:
     def append(self, plugin):
         if plugin not in self.plugins:
             self.plugins.append(plugin)
+            self.plugins.sort(key=lambda item: type(item).__module__)
 
 
 class PluginInterface:

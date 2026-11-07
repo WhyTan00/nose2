@@ -16,6 +16,10 @@ Unreleased
 Fixed
 ~~~~~
 
+* Plugin hooks now execute in alphabetical order of the plugins' defining
+  modules regardless of whether they are activated by configuration or
+  command-line options. (:issue:`397`)
+
 * JUnit XML reports now use the containing test's start timestamp for every
   failing subtest. (:issue:`567`)
 

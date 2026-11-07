@@ -5,6 +5,10 @@ Hook reference
 
    Hooks are listed here in order of execution.
 
+   Within a hook, plugins run in alphabetical order of the modules defining
+   their classes, whether activated by configuration or command-line options.
+   Plugins from the same module retain their registration order.
+
 
 Pre-registration Hooks
 ----------------------
@@ -39,8 +43,8 @@ Pre-registration Hooks
    The ``handleArgs`` hook is called after all arguments from the command
    line have been parsed. Plugins can use this hook to handle command-line
    arguments in non-standard ways. They should not use it to try to modify
-   arguments seen by other plugins, since the order in which plugins
-   execute in a hook is not guaranteed.
+   arguments seen by other plugins, since this would make their behavior
+   depend on plugin execution order.
 
    Since ``handleArgs`` is a pre-registration hook, it is called for
    *all plugins* that implement the method, whether they have registered
